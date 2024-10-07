@@ -9,7 +9,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Daenet.PluginTestConsole.App.Plugin1
+namespace Daenet.LLMPlugin.TestConsole.App.Plugin1
 {
     public class MyPlugin
     {
