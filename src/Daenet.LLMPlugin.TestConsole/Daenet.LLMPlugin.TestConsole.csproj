@@ -39,7 +39,6 @@
 	
 	<ItemGroup>
 	  <ProjectReference Include="..\Daenet.LLMPlugin.Common\Daenet.LLMPlugin.Common.csproj" />
-	  <ProjectReference Include="..\searchapi\Daenet.EmbeddingSearchApi.csproj" />
 	</ItemGroup>
 
 	

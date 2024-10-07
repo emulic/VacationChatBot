@@ -13,7 +13,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Daenet.LLMPlugin.Common\Daenet.LLMPlugin.Common.csproj" />
-    <ProjectReference Include="..\Daenet.PluginTestConsole\Daenet.LLMPlugin.TestConsole.csproj" />
+    <ProjectReference Include="..\Daenet.LLMPlugin.TestConsole\Daenet.LLMPlugin.TestConsole.csproj" />
+   
   </ItemGroup>
 
   <ItemGroup>
