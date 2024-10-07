@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daenet.LLMPlugin.TestConsol
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daenet.PluginTestConsole.App", "Daenet.PluginTestConsole.App\Daenet.PluginTestConsole.App.csproj", "{A1E1E724-A8F9-4482-817D-92B3AC9E41EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daenet.EmbeddingSearchApi", "searchapi\Daenet.EmbeddingSearchApi.csproj", "{90721927-79CC-4B1B-956B-5E71EADEEBA9}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daenet.LLMPlugin.Common", "Daenet.LLMPlugin.Common\Daenet.LLMPlugin.Common.csproj", "{B6F1E759-0CB1-440B-931C-5AEA4E6C1D4D}"
 EndProject
 Global
@@ -25,10 +23,6 @@ Global
 		{A1E1E724-A8F9-4482-817D-92B3AC9E41EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1E1E724-A8F9-4482-817D-92B3AC9E41EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1E1E724-A8F9-4482-817D-92B3AC9E41EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{90721927-79CC-4B1B-956B-5E71EADEEBA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90721927-79CC-4B1B-956B-5E71EADEEBA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{90721927-79CC-4B1B-956B-5E71EADEEBA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{90721927-79CC-4B1B-956B-5E71EADEEBA9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B6F1E759-0CB1-440B-931C-5AEA4E6C1D4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B6F1E759-0CB1-440B-931C-5AEA4E6C1D4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6F1E759-0CB1-440B-931C-5AEA4E6C1D4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
