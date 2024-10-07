@@ -62,10 +62,11 @@ namespace Daenet.LLMPlugin.TestConsole.App.Plugin1
                 {
                     var targetProcess = processes.FirstOrDefault(p => p.Id == processId);
                     if (targetProcess != null)
+                    {
                         targetProcess.Kill();
+                    }
                 }
-
-                if (processName != null)
+                else if (processName != null)
                 {
                     var targetProcess = processes.FirstOrDefault(p => p.ProcessName == processName);
                     if (targetProcess != null)
