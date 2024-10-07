@@ -400,3 +400,5 @@ FodyWeavers.xsd
 /src/Daenet.PluginTestConsole.App/appsettings - Copy.json
 /src/Daenet.PluginTestConsole.App/Properties/launchSettings.json
 /src/Daenet.PluginTestConsole.App/appsettings.json
+/src/Daenet.LLMPlugin.TestConsole.App/Properties/launchSettings2.json
+/src/Daenet.LLMPlugin.TestConsole.App/appsettings - Copy.json
