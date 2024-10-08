@@ -256,7 +256,7 @@ namespace Daenet.LLMPlugin.TestConsole
         private static Kernel? TryGetOpenAIKernel()
         {
             Kernel? kernel = null;
-
+          
             if (Environment.GetEnvironmentVariable("OPENAI_CHATCOMPLETION_DEPLOYMENT") != null &&
                Environment.GetEnvironmentVariable("OPENAI_API_KEY") != null &&
                Environment.GetEnvironmentVariable("OPENAI_ORGID") != null)

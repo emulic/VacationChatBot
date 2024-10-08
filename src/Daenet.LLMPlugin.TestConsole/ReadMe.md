@@ -1,6 +1,6 @@
 ﻿# TestConsole
 
-`Daenet.PluginTestConsole` is a simple console library application designed for the development and testing of Semantic Kernel plugins. While testing plugins is not a particularly complex task, it requires several repetitive steps such as loading plugins, configuring them, implementing a chat loop, maintaining message history, executing plugin functions, and more. Although these tasks are straightforward, they can become tedious when repeated frequently.
+`Daenet.LLMPlugin.TestConsole` is a console library designed for the development and testing of Semantic Kernel plugins. While testing plugins is not a particularly complex task, it requires several repetitive steps such as loading plugins, configuring them, implementing a chat loop, maintaining message history, executing plugin functions, and more. Although these tasks are straightforward, they can become tedious when repeated frequently.
 
 To streamline this process and accelerate development, we have created a library that simplifies the implementation of a testing console application. This console application can be used to quickly learn how to develop Semantic Kernel plugins and speed up the development process.
 
@@ -27,12 +27,6 @@ A plugin is a class, and the methods within the class represent the plugin's fun
 - Similarly, if you have a plugin named `AbcPlugin`, its configuration class should be named `AbcPluginConfig`.
 
 This is not a strict requirement of the Semantic Kernel (SK), but it is considered a best practice to ensure that each plugin has an associated configuration class. This structure helps maintain clarity and modularity in the plugin design.
-
-## Bootstrapping
-
-We provide the necessary bootstrap code to load and initialize all plugins, streamlining the entire process. By leveraging this bootstrap code, you can concentrate on developing the core functionality of your plugins while the framework takes care of the repetitive setup and initialization tasks.
-
-Using `Daenet.PluginTestConsole` simplifies the development and testing of Semantic Kernel plugins, enabling you to focus on innovation rather than infrastructure.
 
 ## Plugin Configuration
 
@@ -61,9 +55,61 @@ Plugin configuration is managed in the `appsettings.json` file. Configuration de
 ~~~
 
 
-# Test Console Plugin: Function Documentation
+# How to implement plugin host?
 
-The Test Console Plugin provides several utility functions designed to enhance the development and testing of Semantic Kernel plugins. These functions allow you to clear console output, manage conversation history, customize prompt appearances, and list available plugins. This documentation outlines the functions available and provides example use cases for each.
+To work with plugins, you need to implement the plugin and provide a host application.
+Plugins are typically implemented in a library, which is referenced by the host application.
+The project *Daenet.LLMPlugin.TestConsole.App* is a sample console application that demonstrates how to run the console with LLM functionality, which automatically loads your plugin.
+It illustrates how to set up the plugin configuration in appsettings.json, and initialize the Test Console implemented in *Daenet.LLMPlugin.TestConsole*.
+
+The sample application includes a built-in plugin implemented in the class MyPlugin.
+This plugin provides simple functionality to retrieve information about running processes on the system.
+
+The plugin configuration looks like this:
+
+~~~json
+  "Plugins": [
+	{
+	  "Name": "MyPlugin",
+	  "AssemblyQualifiedName": "Daenet.LLMPlugin.TestConsole.App.MyPlugin, Daenet.LLMPlugin.TestConsole.App",
+	  "JsonConfiguration": {
+		"Prop1": "Value 1",
+		"Prop2": "Value 2"
+	  }
+	}
+  ],
+~~~
+  
+ All plugins must be listed under the Plugins section to ensure that the framework can load and initialize them properly.
+The plugin configuration must correspond to the plugin configuration class name, specified in the JsonConfiguration section of the plugin configuration.
+The implementation of the *IPluginProvider* interface, as seen in the class *DefaultPluginProvider*, is responsible for loading the plugin.
+The *DefaultPluginProvider* loads plugins defined in the 'Plugins' section, which are part of the AppDomain of the host application.
+If plugins need to be loaded from another location dynamically, you can implement your own *IPluginProvider* and dynamically load plugins from the desired location (e.g., Blob Storage).
+
+When the sample host application starts you can start using the 'MyPlugin'. Inside the console type following prompts:
+
+`How many processes are currentlly running?`
+
+`Is there any process that contains 'plugin' in the name of the proces?`
+
+`Is the notepad running?`
+
+`what is the id of the notepad process?`
+
+`kill it`
+
+`kill visual studio code`
+
+`list first 50 processes`
+
+`provide detailed process information`
+
+
+# Test Console Plugin
+
+The library **Daenet.LLMPlugin.TestConsole** provides several utility functions designed to enhance the development and testing of Semantic Kernel plugins. 
+These functions are implemented as plugin and allow you to clear console output, manage conversation history, customize prompt appearances, and list available plugins. 
+This documentation outlines the functions available and provides example use cases for each.
 
 ## Function Overview
 
@@ -72,10 +118,23 @@ The Test Console Plugin provides several utility functions designed to enhance t
 - **Description**: Clears all text currently displayed in the console.
 - **Use Case**: Useful when starting fresh, ensuring that no previous messages or clutter remain in the console.
   
+Example:
+
+`clear console`
+
+
 ### 2. `ClearMessageHistory`
 
 - **Description**: Deletes all messages from the conversation history but does not affect the text displayed in the console.
 - **Use Case**: Ideal for resetting the conversation history while retaining previous console logs for reference.
+
+Examples:
+
+`clear chat history`
+
+`claer history`
+
+`delete conversation`
 
 ### 3. `ListPlugins`
 
@@ -83,6 +142,15 @@ The Test Console Plugin provides several utility functions designed to enhance t
 - **Use Case**: Helps developers quickly identify which plugins are available and, if required, fetch detailed information about each plugin.
 - **Parameters**:
   - `details` (boolean, optional): If set to `true`, additional information about each plugin is displayed.
+
+Examples:
+
+`show loaded plugins`
+
+`list plugins`
+
+`provide detailed information for function ListPlugins`
+
 
 ### 4. `SetSystemPromptColor`
 
@@ -92,12 +160,22 @@ The Test Console Plugin provides several utility functions designed to enhance t
   - `color` (string): Defines the desired color of the system prompt. Available options:
     - `"Black"`, `"DarkBlue"`, `"DarkGreen"`, `"DarkCyan"`, `"DarkRed"`, `"DarkMagenta"`, `"DarkYellow"`, `"Gray"`, `"DarkGray"`, `"Blue"`, `"Green"`, `"Cyan"`, `"Red"`, `"Magenta"`, `"Yellow"`, `"White"`.
 
+Examples:
+
+`set color of system prompt to cyan`
+
+
 ### 5. `SetUserPromptColor`
 
 - **Description**: Changes the color of the user prompt/input.
 - **Use Case**: Enables customization of the user prompt color for improved visibility or user preference.
 - **Parameters**:
   - `color` (string): Defines the desired color for user input. The available options are the same as for `SetSystemPromptColor`.
+
+Examples:
+
+`set user prompt color to cyan`
+
 
 ### 6. `SetAssistantColor`
 
@@ -106,6 +184,11 @@ The Test Console Plugin provides several utility functions designed to enhance t
 - **Parameters**:
   - `color` (string): Specifies the desired color for assistant messages. Options are the same as those available for the system prompt.
 
+Examples:
+
+`set assistent output color to yellow`
+
+
 ### 7. `SetSystemPromptText`
 
 - **Description**: Modifies the default text displayed in the system prompt.
@@ -113,30 +196,11 @@ The Test Console Plugin provides several utility functions designed to enhance t
 - **Parameters**:
   - `promptText` (string): The custom text to be displayed as the system prompt.
 
-# Implement the console test application
+Examples:
 
-To work with plugins You will have to implement the plugin and to provide a host application.
-Plugins are typically implemented in some library, which is refernced by the host application.
-The solution *Daenet.PluginTestConsole.App* is a sample console application, which demonstrates
-how to run the console with LLM functionality, which automatically loads your plugin.
-The plugin in the sample application *Daenet.PluginTestConsole.App* is implemented in the class MyPlugin.
-It provides a simple functionality to get information about running processes on the system.
+`set prompt to '=>'`
 
-
-~~~csharp
-namespace Daenet.PluginTestConsole.App
-{
-    internal class Program
-    {
-        static async Task Main(string[] args)
-        {
-            await TestConsole.RunAsync(args);
-        }
-    }
-}
-~~~
 
 # Call to action
 
-Please feel free to use it and extend it as you need.
-Plugins are implemented inside the project *Daenet.GptBot.PluginLib*.
+Please feel free to use this library and extend it as you need.
