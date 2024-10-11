@@ -1,4 +1,5 @@
-﻿using Daenet.LLMPlugin.Common;
+﻿using Daenet.EmbeddingSearchApi.Services;
+using Daenet.LLMPlugin.Common;
 using Daenet.LLMPlugin.TestConsole;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,7 +24,7 @@ namespace Daenet.LLMPlugin.TestConsole.App
             // Initializes the logging.
             serviceCollection.AddLogging(configure => configure.AddConsole());
 
-            RegisterPluginLibrary(serviceCollection, cfg);
+            UsePluginLibrary(serviceCollection, cfg);
 
             // Register the provider for creating instances of plugins.
             serviceCollection.AddSingleton<IPlugInProvider, DefaultPlugInProvider>();
@@ -37,8 +38,13 @@ namespace Daenet.LLMPlugin.TestConsole.App
             // Register the configuration of the built-in plugin.
             serviceCollection.AddSingleton<TestConsole>();
 
+            UseSemanticSearchApi(cfg, serviceCollection);
+
             // Build the service provider.
             var serviceProvider = serviceCollection.BuildServiceProvider();
+
+           
+            //ActivatorUtilities.CreateInstance(serviceProvider, typeof(SearchApi));
 
             var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
             
@@ -70,7 +76,7 @@ namespace Daenet.LLMPlugin.TestConsole.App
         /// Loads the list of required plugins from the appsetings and creates the Plugin Library.
         /// </summary>
         /// <param name="builder"></param>
-        private static void RegisterPluginLibrary(ServiceCollection svcCollection, IConfiguration configuration)
+        private static void UsePluginLibrary(ServiceCollection svcCollection, IConfiguration configuration)
         {
             PluginLibrary pluginLib = new PluginLibrary();
 
@@ -90,6 +96,12 @@ namespace Daenet.LLMPlugin.TestConsole.App
             }
 
             svcCollection.AddSingleton(pluginLib);
+        }
+
+        private static void UseSemanticSearchApi(IConfiguration configuration, ServiceCollection serviceCollection)
+        {
+            //
+            SearchApi.UseSemantSearchApi(configuration, serviceCollection);
         }
 
     }
