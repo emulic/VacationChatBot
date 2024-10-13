@@ -404,3 +404,5 @@ FodyWeavers.xsd
 /src/Daenet.LLMPlugin.TestConsole.App/appsettings - Copy.json
 /src/Daenet.LLMPlugin.TestConsole.App/Properties/launchSettings.json
 /src/searchapi
+/src/Daenet.LLMPlugin.TestConsole.App/appsettings - EMPTY.json
+/src/Daenet.LLMPlugin.TestConsole.App/appsettings - WITH SECRETS.json
