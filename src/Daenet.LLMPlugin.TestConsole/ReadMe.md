@@ -54,6 +54,8 @@ Plugin configuration is managed in the `appsettings.json` file. Configuration de
   ],
 ~~~
 
+The section *JsonConfiguration* must correspond to the configuration class of the plugin `MyPluginConfig`. The plugin configuration class must have properties that match the keys in the *JsonConfiguration* section. 
+The plugin configuration class is used to deserialize the configuration data.
 
 # How to implement plugin host?
 
@@ -108,8 +110,9 @@ When the sample host application starts you can start using the 'MyPlugin'. Insi
 # Test Console Plugin
 
 The library **Daenet.LLMPlugin.TestConsole** provides several utility functions designed to enhance the development and testing of Semantic Kernel plugins. 
-These functions are implemented as plugin and allow you to clear console output, manage conversation history, customize prompt appearances, and list available plugins. 
-This documentation outlines the functions available and provides example use cases for each.
+These functions are implemented as plugin `TestConsolePlugin`, which allows you to clear console output, manage conversation history, customize prompt appearances, list available plugins,
+change promp colors etc. 
+Following section outlines the functions available and provides example use cases for each.
 
 ## Function Overview
 
