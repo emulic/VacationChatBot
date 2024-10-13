@@ -19,8 +19,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<None Update="appsettings - Copy.json">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		<None Update="appsettings - EMPTY.json">
+		  <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</None>
+		<None Update="appsettings - WITH SECRETS.json">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</None>
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
