@@ -58,7 +58,7 @@ namespace Daenet.LLMPlugin.TestConsole.App.Plugin1
             {
                 var processes = Process.GetProcesses().ToList();
 
-                if (processId.HasValue)
+                if (processId.HasValue && processId > 0)
                 {
                     var targetProcess = processes.FirstOrDefault(p => p.Id == processId);
                     if (targetProcess != null)

@@ -23,15 +23,16 @@ namespace Daenet.LLMPlugin.TestConsole.App.Plugin2
         }
 
         [KernelFunction]
-        [Description("Urlaub buchen.")]
-        public string VacationBooking()
+        [Description("Book vacation buchen.")]
+        public string VacationBooking([Description("The starting data of the vacation.")]DateTime startVacation, 
+            [Description("How many vacation days should be booked.")]int days)
         {
-            return "Urlaub kann nicht gebucht werden, weil viele deiner Kollegen in diesem Period abwesend sind.";
+            return "Vacation cannot be booked, becaue too many team members are already in vacation.";
         }
 
         [KernelFunction]
-        [Description("Berechnet Umsatz aus gegebenen monat")]
-        public int RevenueNumbers(int monat)
+        [Description("Calculates the revenue for the given month.")]
+        public int RevenueNumbers([Description("Month for which the revenue should be calculated.")]int monat)
         {
             return 1000;
         }
