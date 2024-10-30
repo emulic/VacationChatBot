@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Daenet.LLMPlugin.TestConsole.App.Plugins.EmployeeService
+namespace Daenet.LLMPlugin.TestConsole.App.EmployeeServiceClient
 {
-    public class EmployeeServiceConfig
+    public class EmployeeServiceClientConfig
     {
         public string Property1 { get; set; }
 
