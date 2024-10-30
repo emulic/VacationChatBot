@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Daenet.LLMPlugin.TestConsole.App.Plugins.EmployeeService
 {
-    public class EmployeeServicePluginConfig
+    public class VacationPluginConfig
     {
-        public EmployeeServiceClientConfig EmployeeServiceClientConfig { get; set; }
+        public string Property1{ get; set; }
+        public string Property2{ get; set; }
     }
 }

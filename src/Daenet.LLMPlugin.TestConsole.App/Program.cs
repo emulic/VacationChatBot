@@ -1,6 +1,7 @@
 ﻿//using Daenet.EmbeddingSearchApi.Services;
 using Daenet.LLMPlugin.Common;
 using Daenet.LLMPlugin.TestConsole;
+using Daenet.LLMPlugin.TestConsole.App.EmployeeServiceClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -39,6 +40,12 @@ namespace Daenet.LLMPlugin.TestConsole.App
             serviceCollection.AddSingleton<TestConsole>();
 
             UseSemanticSearchApi(cfg, serviceCollection);
+
+            PluginLibrary pluginLib = new PluginLibrary();
+
+            var employeeServiceClientConfig = cfg.GetSection("EmployeeServiceClient").Get<EmployeeServiceClientConfig>();
+            serviceCollection.AddSingleton<EmployeeServiceClientConfig>(employeeServiceClientConfig);
+            serviceCollection.AddScoped<IEmployeeServiceClient, EmployeeServiceClientMock>();
 
             // Build the service provider.
             var serviceProvider = serviceCollection.BuildServiceProvider();
